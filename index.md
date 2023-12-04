@@ -1,9 +1,7 @@
 ## About
-I am Reon Taknao (鷹野 礼音).
-
-I am in the 1st year of a Master’s degree in information system engineering at [Tokyo Denki University](https://www.dendai.ac.jp/).
-
-I am an affiliate of [Visual Perception & Recognition Lab(VPRL)](https://033lab.org/) advised by [Yuko Ozasa（小篠 裕子）](https://researchmap.jp/yuko.ozasa?lang=en).
+I am Reon Taknao (鷹野 礼音).  
+I am in the 1st year of a Master’s degree in information system engineering at [Tokyo Denki University](https://www.dendai.ac.jp/).  
+I am an affiliate of [Visual Perception & Recognition Lab(VPRL)](https://033lab.org/) advised by [Yuko Ozasa（小篠 裕子）](https://researchmap.jp/yuko.ozasa?lang=en).  
 
 
 E-mail:23amj15[at]ms.dendai.ac.jp
