@@ -2,7 +2,8 @@
 I am Reon Taknao (鷹野 礼音).
 I am in the 1st year of a Master’s degree in information system engineering at [Tokyo Denki University](https://www.dendai.ac.jp/).
 I am an affiliate of [Visual Perception & Recognition Lab(VPRL)](https://033lab.org/) advised by [Yuko Ozasa（小篠 裕子）](https://researchmap.jp/yuko.ozasa?lang=en).
-- 23amj15[at]ms.dendai.ac.jp
+
+E-mail:23amj15[at]ms.dendai.ac.jp
 
 ## Research
 - Color Perception
@@ -14,7 +15,7 @@ I am an affiliate of [Visual Perception & Recognition Lab(VPRL)](https://033lab.
 
 ## Awards(Japanese)
 <!-- - Student Encouragement Award  of IPSJ, 2021 -->
-- 電子情報通信学会総合大会 情報・システムソサイエティ特別企画「ジュニア＆学生ポスターセッション」, 優秀ポスター賞, 2023 (https://www.ieice.org/jpn_r/junior/poster_session_awards.html)
+- [電子情報通信学会総合大会 情報・システムソサイエティ特別企画「ジュニア＆学生ポスターセッション」, 優秀ポスター賞, 2023](https://www.ieice.org/jpn_r/junior/poster_session_awards.html)
 
 
 ## Publications
