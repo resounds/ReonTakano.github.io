@@ -22,7 +22,7 @@ E-mail:23amj15[at]ms.dendai.ac.jp
 ## Publications
 
 ### International Conference 
-1. __R.Takano__ and Y.Ozasa Adapting Indoor Scene Design to User-Selected Mood，Computer Graphics and Image Processing (CGIP)（2024.1）
+1. __R.Takano__ and Y.Ozasa　Adapting Indoor Scene Design to User-Selected Mood，Computer Graphics and Image Processing (CGIP)（2024.1）
 
 ### Domestic Conference (Japanese)
 1. __鷹野礼音__，小篠裕子　選択した雰囲気に合わせた空間デザイン，電子情報通信学会総合大会 情報・システムソサイエティ特別企画「ジュニア＆学生ポスターセッション」(2023.3)
