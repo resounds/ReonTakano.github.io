@@ -71,7 +71,7 @@ const Portfolio = () => {
     },
     {
       id: 2,
-      company: "オリエンタルランド株式会社",
+      company: "株式会社オリエンタルランド",
       position: "フードサービスキャスト",
       period: "2024年7月 - 2025年3月",
       description: [
@@ -170,7 +170,7 @@ const Portfolio = () => {
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">鷹野 礼音</h1>
             <p className="text-xl md:text-2xl text-white/80 mb-8">ソフトウェアエンジニア</p>
-            <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">モダンなWeb技術を使用して、ユーザー体験を重視したアプリケーション開発に取り組んでいます。React、TypeScript、Node.jsを中心とした技術スタックで、スケーラブルなソリューションを提供します。</p>
+            {/* <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">モダンなWeb技術を使用して、ユーザー体験を重視したアプリケーション開発に取り組んでいます。React、TypeScript、Node.jsを中心とした技術スタックで、スケーラブルなソリューションを提供します。</p> */}
             <div className="flex justify-center space-x-4">
               <button onClick={() => scrollToSection('projects')} className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition-all duration-300 transform hover:scale-105">プロジェクトを見る</button>
               <button onClick={() => scrollToSection('contact')} className="border-2 border-pink-400 text-pink-400 px-8 py-3 rounded-full font-semibold text-lg hover:bg-pink-400/10 transition-all duration-300">お問い合わせ</button>
