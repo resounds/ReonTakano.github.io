@@ -96,7 +96,7 @@ const Portfolio = () => {
   const skills: Skill[] = [
     {
       category: "フロントエンド",
-      items: ["React", "javaScript", "TypeScript", "Next.js", "CSS", "Tailwind CSS"]
+      items: ["React", "JavaScript", "TypeScript", "Next.js", "CSS", "Tailwind CSS"]
     },
     {
       category: "バックエンド",
@@ -204,8 +204,8 @@ const Portfolio = () => {
                 <h3 className="text-2xl font-semibold mb-4 text-pink-300">プロフィール</h3>
                 <p className="text-white/80 mb-2">鷹野 礼音（Reon Takano）</p>
                 <div className="flex space-x-4 mt-4 mb-6">
-                  <a href="#" className="text-white/70 hover:text-pink-400 transition-colors"><Github size={24} /></a>
-                  <a href="#" className="text-white/70 hover:text-pink-400 transition-colors"><Linkedin size={24} /></a>
+                  <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-pink-400 transition-colors"><Github size={24} /></a>
+                  <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-pink-400 transition-colors"><Linkedin size={24} /></a>
                   <a href="mailto:23amj15@ms.dendai.ac.jp" className="text-white/70 hover:text-pink-400 transition-colors"><Mail size={24} /></a>
                 </div>
                 <div className="space-y-4">
@@ -314,9 +314,9 @@ const Portfolio = () => {
                   <span className="text-white/90">resound0902@gmail.com</span>
                 </div>
                 <div className="flex justify-center space-x-6 mt-8">
-                  <a href="#" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Github size={20} /></a>
-                  <a href="#" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Linkedin size={20} /></a>
-                  <a href="#" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Mail size={20} /></a>
+                  <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Github size={20} /></a>
+                  <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Linkedin size={20} /></a>
+                  <a href="mailto:resound0902@gmail.com" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Mail size={20} /></a>
                 </div>
               </div>
             </div>
