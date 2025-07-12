@@ -103,7 +103,7 @@ const Portfolio = () => {
         },
         {
             category: "ツール・その他",
-            items: ["Git", "Docker", "Amazon ", "Figma", "Unity", "GAS"]
+            items: ["Git", "Docker", "AWS ", "Figma", "Unity", "GAS"]
         }
     ];
 
