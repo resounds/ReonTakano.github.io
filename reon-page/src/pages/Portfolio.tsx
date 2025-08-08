@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import { Github, Mail, ExternalLink, Menu, X } from 'lucide-react';
 
+// Qiita アイコン（SVGコンポーネント）
+const QiitaIcon = ({ size = 24 }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 512 512"
+    fill="currentColor"
+  >
+    <path d="M256 0C114.836 0 0 114.836 0 256s114.836 256 256 256 256-114.836 256-256S397.164 0 256 0zm85.333 373.333H170.667v-42.666h170.666v42.666zm0-85.333H170.667v-42.667h170.666v42.667zm0-85.333H170.667V160h170.666v42.667z" />
+  </svg>
+);
+
+
 interface Project {
     id: number;
     title: string;
@@ -205,6 +219,7 @@ const Portfolio = () => {
                                 <div className="flex space-x-4 mt-4 mb-6">
                                     <a href="https://github.com/resounds" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-pink-400 transition-colors"><Github size={24} /></a>
                                     <a href="https://x.com/tube_roxas0601?t=gvy15tE6SsO1hy9YXwoTFw&s=09" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-pink-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.53 3H21.5L14.88 10.39L22.68 21H16.16L11.21 14.41L5.52 21H1.5L8.57 13.09L1.09 3H7.75L12.24 9.02L17.53 3ZM16.41 19H18.29L7.36 4.89H5.36L16.41 19Z" fill="currentColor" /></svg></a>
+                                    <a href="https://qiita.com/resound" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-pink-400 transition-colors"><QiitaIcon size={20} /></a>
                                     <a href="mailto:resound0902@gmail.com" className="text-white/70 hover:text-pink-400 transition-colors"><Mail size={24} /></a>
                                 </div>
                                 <div className="space-y-4">
@@ -315,6 +330,7 @@ const Portfolio = () => {
                                 <div className="flex justify-center space-x-6 mt-8">
                                     <a href="https://github.com/resounds" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Github size={20} /></a>
                                     <a href="https://x.com/tube_roxas0601?t=gvy15tE6SsO1hy9YXwoTFw&s=09" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.53 3H21.5L14.88 10.39L22.68 21H16.16L11.21 14.41L5.52 21H1.5L8.57 13.09L1.09 3H7.75L12.24 9.02L17.53 3ZM16.41 19H18.29L7.36 4.89H5.36L16.41 19Z" fill="currentColor" /></svg></a>
+                                    <a href="https://qiita.com/resound" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 transition-transform"><QiitaIcon size={20} /></a>
                                     <a href="mailto:resound0902@gmail.com" className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 text-pink-200 p-3 rounded-full hover:scale-110 hover:bg-pink-500/40 transition-transform"><Mail size={20} /></a>
                                 </div>
                             </div>
