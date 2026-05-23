@@ -1,11 +1,15 @@
-// src/components/Scenes/SceneResearch.tsx
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Scenes.module.css';
 import { research } from '../../data/research';
+import { PixieCard } from '../Common/PixieCard';
 
 export const SceneResearch = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+
   return (
-    <div className={styles.sceneContent}>
+    <div className={styles.sceneContent} ref={ref}>
       <motion.h2
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -14,13 +18,7 @@ export const SceneResearch = () => {
         Research
       </motion.h2>
       {research.map((item, index) => (
-        <motion.div 
-          key={index} 
-          className={styles.card}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <PixieCard key={index} isVisible={isInView}>
           <h3>{item.title}</h3>
           <p>{item.summary}</p>
           <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
@@ -30,7 +28,7 @@ export const SceneResearch = () => {
               </span>
             ))}
           </div>
-        </motion.div>
+        </PixieCard>
       ))}
     </div>
   );

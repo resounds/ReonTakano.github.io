@@ -1,18 +1,17 @@
-// src/components/Scenes/SceneArchive.tsx
-import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Scenes.module.css';
 import { publications } from '../../data/publications';
 import { awards } from '../../data/awards';
+import { PixieCard } from '../Common/PixieCard';
 
 export const SceneArchive = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+
   return (
-    <div className={styles.sceneContent}>
-      <motion.div 
-        className={styles.card}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+    <div className={styles.sceneContent} ref={ref}>
+      <PixieCard isVisible={isInView}>
         <h2>Archive</h2>
         
         <div style={{ marginTop: '2rem' }}>
@@ -38,7 +37,7 @@ export const SceneArchive = () => {
             ))}
           </ul>
         </div>
-      </motion.div>
+      </PixieCard>
     </div>
   );
 };

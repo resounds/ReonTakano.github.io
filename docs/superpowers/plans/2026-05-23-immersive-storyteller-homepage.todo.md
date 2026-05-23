@@ -1,5 +1,5 @@
 - [x] Task 1: Reactive Nebula Core (GPU Shaders)
-- [ ] Task 2: Cinematic Camera & Staging
-- [ ] Task 3: "Pixie Dust" UI Component
+- [x] Task 2: Cinematic Camera & Staging
+- [x] Task 3: "Pixie Dust" UI Component
 - [ ] Task 4: Scene 2 & 3 Refinement (Planetary Exploration)
 - [ ] Task 5: Final Global Polish & Performance
