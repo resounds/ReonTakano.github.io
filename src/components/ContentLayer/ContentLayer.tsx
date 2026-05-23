@@ -3,6 +3,8 @@ import { useScroll, useMotionValueEvent } from 'framer-motion';
 import styles from './ContentLayer.module.css';
 import { SceneEntrance } from '../Scenes/SceneEntrance';
 import { ScenePersona } from '../Scenes/ScenePersona';
+import { SceneResearch } from '../Scenes/SceneResearch';
+import { SceneArchive } from '../Scenes/SceneArchive';
 
 interface ContentLayerProps {
   onSceneChange: (index: number) => void;
@@ -24,12 +26,8 @@ export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
     <main ref={containerRef} className={styles.container}>
       <section className={styles.scene}><SceneEntrance /></section>
       <section className={styles.scene}><ScenePersona /></section>
-      <section className={styles.scene}>
-        <div>Scene 2 (Upcoming)</div>
-      </section>
-      <section className={styles.scene}>
-        <div>Scene 3 (Upcoming)</div>
-      </section>
+      <section className={styles.scene}><SceneResearch /></section>
+      <section className={styles.scene}><SceneArchive /></section>
     </main>
   );
 };
