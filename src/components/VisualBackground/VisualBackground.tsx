@@ -3,6 +3,12 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { NebulaShader } from './NebulaShader';
+import { useCinematicCamera } from '../../hooks/useCinematicCamera';
+
+const CameraController = ({ sceneIndex }: { sceneIndex: number }) => {
+  useCinematicCamera(sceneIndex);
+  return null;
+};
 
 const Nebula = ({ sceneIndex }: { sceneIndex: number }) => {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -21,8 +27,8 @@ const Nebula = ({ sceneIndex }: { sceneIndex: number }) => {
 
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
-    uColor1: { value: colors.c1 },
-    uColor2: { value: colors.c2 },
+    uColor1: { value: new THREE.Color(0x4e00ff) },
+    uColor2: { value: new THREE.Color(0xff0080) },
     uMouse: { value: new THREE.Vector2(0, 0) },
   }), []);
 
@@ -51,7 +57,8 @@ const Nebula = ({ sceneIndex }: { sceneIndex: number }) => {
 
 export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => (
   <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, background: '#050505' }}>
-    <Canvas camera={{ position: [0, 0, 5] }}>
+    <Canvas camera={{ position: [0, 0, 10] }}>
+      <CameraController sceneIndex={sceneIndex} />
       <Nebula sceneIndex={sceneIndex} />
     </Canvas>
   </div>
