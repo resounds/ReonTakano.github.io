@@ -1,0 +1,23 @@
+/* src/components/ContentLayer/ContentLayer.module.css */
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.scene {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+}

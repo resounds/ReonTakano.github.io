@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import './App.css'
 import { VisualBackground } from './components/VisualBackground/VisualBackground'
+import { ContentLayer } from './components/ContentLayer/ContentLayer'
 
 function App() {
+  const [sceneIndex, setSceneIndex] = useState(0);
+
   return (
     <div className="app">
-      <VisualBackground />
-      <div style={{ height: '200vh', color: 'white', padding: '2rem', position: 'relative', zIndex: 1 }}>
-        <h1>Takano Reon</h1>
-        <p>Scroll down to see the experience.</p>
+      <VisualBackground sceneIndex={sceneIndex} />
+      <ContentLayer onSceneChange={setSceneIndex} />
+      <div style={{ position: 'fixed', top: '1rem', right: '1rem', color: 'white', zIndex: 10 }}>
+        Scene Index: {sceneIndex}
       </div>
     </div>
   )
