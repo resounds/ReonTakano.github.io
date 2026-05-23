@@ -11,13 +11,14 @@ const RotatingShape = ({ sceneIndex }: { sceneIndex: number }) => {
       case 1: return new Color('#9370db'); // mediumpurple
       case 2: return new Color('#008b8b'); // darkcyan (Research - Intellectual)
       case 3: return new Color('#483d8b'); // darkslateblue (Archive - Depth)
+      case 4: return new Color('#2f4f4f'); // darkslategray (Contact - Final)
       default: return new Color('#4169e1');
     }
   }, [sceneIndex]);
 
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
-    const speed = 0.2 + sceneIndex * 0.2;
+    const speed = sceneIndex === 4 ? 0.2 : 0.2 + sceneIndex * 0.2;
     
     meshRef.current.rotation.x += delta * speed;
     meshRef.current.rotation.y += delta * speed * 0.8;
@@ -44,6 +45,7 @@ const RotatingShape = ({ sceneIndex }: { sceneIndex: number }) => {
       {sceneIndex === 1 && <torusKnotGeometry args={[0.8, 0.3, 100, 16]} />}
       {sceneIndex === 2 && <sphereGeometry args={[1.2, 32, 32]} />}
       {sceneIndex === 3 && <icosahedronGeometry args={[1.5, 0]} />}
+      {sceneIndex === 4 && <tetrahedronGeometry args={[1.5, 0]} />}
       <meshStandardMaterial color="#4169e1" wireframe={sceneIndex === 3} />
     </mesh>
   );

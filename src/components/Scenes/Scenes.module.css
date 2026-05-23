@@ -122,3 +122,25 @@
   font-size: 0.9rem;
   color: #999;
 }
+
+/* Contact Scene */
+.contactLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
