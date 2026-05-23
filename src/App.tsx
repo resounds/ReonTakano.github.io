@@ -1,12 +1,12 @@
 import './styles/App.css';
 import { VisualBackground } from './components/VisualBackground/VisualBackground';
+import { ContentLayer } from './components/ContentLayer/ContentLayer';
 
 function App() {
   return (
     <div className="app">
       <VisualBackground />
-      <h1>Takano Reon Homepage</h1>
-      <p>Welcome to my portfolio site.</p>
+      <ContentLayer />
     </div>
   );
 }
