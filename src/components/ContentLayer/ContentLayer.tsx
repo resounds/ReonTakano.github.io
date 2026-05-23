@@ -1,5 +1,7 @@
 // src/components/ContentLayer/ContentLayer.tsx
 import styles from './ContentLayer.module.css';
+import { SceneEntrance } from '../Scenes/SceneEntrance';
+import { ScenePersona } from '../Scenes/ScenePersona';
 
 interface ContentLayerProps {
   onSceneChange: (index: number) => void;
@@ -15,14 +17,10 @@ export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
   return (
     <main className={styles.container} onScroll={handleScroll}>
       <section className={styles.scene}>
-        <div className={styles.content}>
-          <h1>Scene 0: Entrance</h1>
-        </div>
+        <SceneEntrance />
       </section>
       <section className={styles.scene}>
-        <div className={styles.content}>
-          <h1>Scene 1: Persona</h1>
-        </div>
+        <ScenePersona />
       </section>
       <section className={styles.scene}>
         <div className={styles.content}>
