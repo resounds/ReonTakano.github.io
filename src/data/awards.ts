@@ -1,4 +1,4 @@
-import { Award, Education } from '../types/data';
+import type { Award, Education } from '../types/data';
 
 export const awards: Award[] = [
   {

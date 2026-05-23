@@ -1,4 +1,4 @@
-import { Publication } from '../types/data';
+import type { Publication } from '../types/data';
 
 export const publications: Publication[] = [
   {

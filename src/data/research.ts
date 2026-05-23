@@ -1,4 +1,4 @@
-import { ResearchItem } from '../types/data';
+import type { ResearchItem } from '../types/data';
 
 export const research: ResearchItem[] = [
   {

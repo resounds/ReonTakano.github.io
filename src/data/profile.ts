@@ -1,4 +1,4 @@
-import { Profile } from '../types/data';
+import type { Profile } from '../types/data';
 
 export const profile: Profile = {
   name: "鷹野 礼音",

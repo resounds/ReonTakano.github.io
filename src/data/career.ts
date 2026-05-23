@@ -1,4 +1,4 @@
-import { CareerItem } from '../types/data';
+import type { CareerItem } from '../types/data';
 
 export const career: CareerItem[] = [
   {
