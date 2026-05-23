@@ -13,6 +13,7 @@ const RotatingMesh = ({ sceneIndex }: { sceneIndex: number }) => {
       case 1: targetColor.set('forestgreen'); break;
       case 2: targetColor.set('crimson'); break;
       case 3: targetColor.set('darkorange'); break;
+      case 4: targetColor.set('indigo'); break;
       default: targetColor.set('royalblue');
     }
   }, [sceneIndex]);
@@ -33,6 +34,7 @@ const RotatingMesh = ({ sceneIndex }: { sceneIndex: number }) => {
       {sceneIndex === 1 && <sphereGeometry args={[1, 32, 32]} />}
       {sceneIndex === 2 && <torusGeometry args={[1, 0.4, 16, 100]} />}
       {sceneIndex === 3 && <octahedronGeometry args={[1.5, 0]} />}
+      {sceneIndex === 4 && <icosahedronGeometry args={[1.5, 0]} />}
       <meshStandardMaterial color="royalblue" />
     </mesh>
   );
