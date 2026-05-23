@@ -1,0 +1,42 @@
+<h2>詳細設計：技術アーキテクチャ</h2>
+<p class="subtitle">高度なアニメーションと没入感を実現するための構成案です。</p>
+
+<div class="section">
+  <h3>1. 技術スタック</h3>
+  <ul>
+    <li><strong>UI Framework:</strong> React (Vite) + TypeScript</li>
+    <li><strong>3D/Visuals:</strong> Three.js (React Three Fiber)
+      <br><span style="font-size: 0.8em; color: #666;">- 没入感のある背景演出（パーティクル、シェーダー）に使用</span>
+    </li>
+    <li><strong>Animation:</strong> Framer Motion
+      <br><span style="font-size: 0.8em; color: #666;">- テキストやカードの出現、セクション遷移に使用</span>
+    </li>
+    <li><strong>Styling:</strong> Vanilla CSS (CSS Modules)
+      <br><span style="font-size: 0.8em; color: #666;">- パフォーマンスと柔軟なカスタマイズのため</span>
+    </li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>2. コンポーネント構成</h3>
+  <pre style="background: #f4f4f4; padding: 10px; border-radius: 4px; font-size: 0.9em;">
+App
+├── VisualBackground (Three.js Canvas)
+│   └── (Sceneごとの背景エフェクトを管理)
+└── ContentLayer (Scroll Container)
+    ├── Scene0: Entrance
+    ├── Scene1: Persona (Profile/Hobbies)
+    ├── Scene2: Research (Deep Dive)
+    ├── Scene3: Archive (Publications/Awards)
+    └── Scene4: Contact
+  </pre>
+</div>
+
+<div class="section">
+  <h3>3. データ管理</h3>
+  <p>コンテンツ（経歴、業績リストなど）は <code>src/data/</code> 配下のJSON/TypeScriptファイルで一括管理します。これにより、将来的な更新を容易にします。</p>
+</div>
+
+<div class="section">
+  <p>この設計方針でよろしいでしょうか？特に「WebGL/Three.jsを使用するため、PCでの閲覧を主眼に置く（モバイルでは演出を簡略化する）」という方針で進める予定です。</p>
+</div>
