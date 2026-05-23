@@ -2,6 +2,8 @@
 import styles from './ContentLayer.module.css';
 import { SceneEntrance } from '../Scenes/SceneEntrance';
 import { ScenePersona } from '../Scenes/ScenePersona';
+import { SceneResearch } from '../Scenes/SceneResearch';
+import { SceneArchive } from '../Scenes/SceneArchive';
 
 interface ContentLayerProps {
   onSceneChange: (index: number) => void;
@@ -23,14 +25,10 @@ export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
         <ScenePersona />
       </section>
       <section className={styles.scene}>
-        <div className={styles.content}>
-          <h1>Scene 2: Research</h1>
-        </div>
+        <SceneResearch />
       </section>
       <section className={styles.scene}>
-        <div className={styles.content}>
-          <h1>Scene 3: Archive</h1>
-        </div>
+        <SceneArchive />
       </section>
     </main>
   );
