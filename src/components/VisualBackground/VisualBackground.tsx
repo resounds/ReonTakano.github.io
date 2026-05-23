@@ -2,38 +2,49 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
+import { NebulaShader } from './NebulaShader';
 
-const RotatingMesh = ({ sceneIndex }: { sceneIndex: number }) => {
+const Nebula = ({ sceneIndex }: { sceneIndex: number }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const targetColor = useMemo(() => {
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+
+  const colors = useMemo(() => {
     switch (sceneIndex) {
-      case 0: return new THREE.Color('royalblue');
-      case 1: return new THREE.Color('forestgreen');
-      case 2: return new THREE.Color('crimson');
-      case 3: return new THREE.Color('darkorange');
-      case 4: return new THREE.Color('indigo');
-      default: return new THREE.Color('royalblue');
+      case 0: return { c1: new THREE.Color(0x4e00ff), c2: new THREE.Color(0xff0080) }; // Purple/Pink
+      case 1: return { c1: new THREE.Color(0x00ff88), c2: new THREE.Color(0x0088ff) }; // Green/Blue
+      case 2: return { c1: new THREE.Color(0xff4400), c2: new THREE.Color(0xffcc00) }; // Orange/Yellow
+      case 3: return { c1: new THREE.Color(0x8800ff), c2: new THREE.Color(0x00ffff) }; // Purple/Cyan
+      case 4: return { c1: new THREE.Color(0x333333), c2: new THREE.Color(0x999999) }; // Monochrome
+      default: return { c1: new THREE.Color(0x4e00ff), c2: new THREE.Color(0xff0080) };
     }
   }, [sceneIndex]);
 
-  useFrame((_state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta * 0.5;
-      meshRef.current.rotation.y += delta * 0.2;
-      
-      const material = meshRef.current.material as THREE.MeshStandardMaterial;
-      material.color.lerp(targetColor, 0.05);
+  const uniforms = useMemo(() => ({
+    uTime: { value: 0 },
+    uColor1: { value: colors.c1 },
+    uColor2: { value: colors.c2 },
+    uMouse: { value: new THREE.Vector2(0, 0) },
+  }), []);
+
+  useFrame((state) => {
+    if (materialRef.current) {
+      materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
+      materialRef.current.uniforms.uColor1.value.lerp(colors.c1, 0.05);
+      materialRef.current.uniforms.uColor2.value.lerp(colors.c2, 0.05);
     }
   });
 
   return (
     <mesh ref={meshRef}>
-      {sceneIndex === 0 && <boxGeometry args={[1, 1, 1]} />}
-      {sceneIndex === 1 && <sphereGeometry args={[1, 32, 32]} />}
-      {sceneIndex === 2 && <torusGeometry args={[1, 0.4, 16, 100]} />}
-      {sceneIndex === 3 && <octahedronGeometry args={[1.5, 0]} />}
-      {sceneIndex === 4 && <icosahedronGeometry args={[1.5, 0]} />}
-      <meshStandardMaterial color="royalblue" />
+      <planeGeometry args={[20, 20]} />
+      <shaderMaterial
+        ref={materialRef}
+        fragmentShader={NebulaShader.fragmentShader}
+        vertexShader={NebulaShader.vertexShader}
+        uniforms={uniforms}
+        transparent
+        depthWrite={false}
+      />
     </mesh>
   );
 };
@@ -41,9 +52,7 @@ const RotatingMesh = ({ sceneIndex }: { sceneIndex: number }) => {
 export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => (
   <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, background: '#050505' }}>
     <Canvas camera={{ position: [0, 0, 5] }}>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      <RotatingMesh sceneIndex={sceneIndex} />
+      <Nebula sceneIndex={sceneIndex} />
     </Canvas>
   </div>
 );
