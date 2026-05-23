@@ -38,6 +38,8 @@ const Nebula = ({ sceneIndex }: { sceneIndex: number }) => {
       materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
       materialRef.current.uniforms.uColor1.value.lerp(colors.c1, 0.05);
       materialRef.current.uniforms.uColor2.value.lerp(colors.c2, 0.05);
+      // Smoothly update mouse position for reactive starlight paths
+      materialRef.current.uniforms.uMouse.value.lerp(state.pointer, 0.1);
     }
   });
 
@@ -98,7 +100,7 @@ const Planet = ({ sceneIndex }: { sceneIndex: number }) => {
 
   return (
     <mesh ref={meshRef} position={[0, 0, 0]}>
-      <sphereGeometry args={[2.5, 64, 64]} />
+      <sphereGeometry args={[2.5, 32, 32]} />
       <shaderMaterial
         ref={materialRef}
         fragmentShader={PlanetShader.fragmentShader}
@@ -110,11 +112,82 @@ const Planet = ({ sceneIndex }: { sceneIndex: number }) => {
   );
 };
 
+const generateParticles = (count: number) => {
+  const temp = [];
+  for (let i = 0; i < count; i++) {
+    temp.push({
+      x: (Math.random() - 0.5) * 20,
+      y: (Math.random() - 0.5) * 20,
+      z: (Math.random() - 0.5) * 10 - 5,
+      speed: Math.random() * 0.02,
+      size: Math.random() * 1.5 + 0.5,
+      mx: 0,
+      my: 0
+    });
+  }
+  return temp;
+};
+
+const Starlight = () => {
+  const count = 2000;
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  
+  const particles = useMemo(() => generateParticles(count), [count]);
+
+  useFrame((state) => {
+    if (!meshRef.current) return;
+    
+    // Convert normalized device coordinates to rough world units for mouse interaction
+    const mouseX = state.pointer.x * 10;
+    const mouseY = state.pointer.y * 10;
+
+    particles.forEach((particle, i) => {
+      // Subtle drift
+      particle.x += Math.sin(state.clock.elapsedTime * particle.speed + i) * 0.01;
+      particle.y += Math.cos(state.clock.elapsedTime * particle.speed + i) * 0.01;
+      
+      // Calculate parting effect
+      const dx = particle.x - mouseX;
+      const dy = particle.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      
+      let offsetX = 0;
+      let offsetY = 0;
+      if (dist < 3) {
+        const force = (3 - dist) / 3;
+        offsetX = (dx / dist) * force * 0.5;
+        offsetY = (dy / dist) * force * 0.5;
+      }
+      
+      // Smooth return to original position
+      particle.mx += (offsetX - particle.mx) * 0.1;
+      particle.my += (offsetY - particle.my) * 0.1;
+
+      dummy.position.set(particle.x + particle.mx, particle.y + particle.my, particle.z);
+      const scale = particle.size * (1 + (dist < 3 ? (3 - dist) * 0.2 : 0));
+      dummy.scale.set(scale, scale, scale);
+      dummy.updateMatrix();
+      meshRef.current!.setMatrixAt(i, dummy.matrix);
+    });
+    
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+      <circleGeometry args={[0.02, 6]} />
+      <meshBasicMaterial color="#ffffff" transparent opacity={0.6} depthWrite={false} />
+    </instancedMesh>
+  );
+};
+
 export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => (
   <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, background: '#050505' }}>
-    <Canvas camera={{ position: [0, 0, 10] }}>
+    <Canvas camera={{ position: [0, 0, 10] }} dpr={[1, 2]}>
       <CameraController sceneIndex={sceneIndex} />
       <Nebula sceneIndex={sceneIndex} />
+      <Starlight />
       <Planet sceneIndex={sceneIndex} />
     </Canvas>
   </div>
