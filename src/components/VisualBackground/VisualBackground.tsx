@@ -1,20 +1,18 @@
 // src/components/VisualBackground/VisualBackground.tsx
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef, useEffect } from 'react';
+import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
 const RotatingMesh = ({ sceneIndex }: { sceneIndex: number }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const targetColor = new THREE.Color();
-
-  useEffect(() => {
+  const targetColor = useMemo(() => {
     switch (sceneIndex) {
-      case 0: targetColor.set('royalblue'); break;
-      case 1: targetColor.set('forestgreen'); break;
-      case 2: targetColor.set('crimson'); break;
-      case 3: targetColor.set('darkorange'); break;
-      case 4: targetColor.set('indigo'); break;
-      default: targetColor.set('royalblue');
+      case 0: return new THREE.Color('royalblue');
+      case 1: return new THREE.Color('forestgreen');
+      case 2: return new THREE.Color('crimson');
+      case 3: return new THREE.Color('darkorange');
+      case 4: return new THREE.Color('indigo');
+      default: return new THREE.Color('royalblue');
     }
   }, [sceneIndex]);
 
