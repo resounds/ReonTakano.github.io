@@ -17,7 +17,7 @@ export const SceneContact = () => {
         </p>
         <div style={{ marginTop: '2rem', display: 'flex', gap: '2rem', justifyContent: 'center' }}>
           <motion.a 
-            href="mailto:reon.takano@example.com"
+            href="mailto:23amj15@ms.dendai.ac.jp"
             whileHover={{ scale: 1.1 }}
             style={{ color: 'white', textDecoration: 'none', borderBottom: '1px solid white' }}
           >

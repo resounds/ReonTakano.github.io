@@ -43,14 +43,6 @@ function App() {
         <>
           <VisualBackground sceneIndex={sceneIndex} />
           <ContentLayer onSceneChange={setSceneIndex} />
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            style={{ position: 'fixed', top: '1rem', right: '1rem', color: 'white', zIndex: 10, fontSize: '0.8rem', opacity: 0.5 }}
-          >
-            SCENE {sceneIndex + 1}
-          </motion.div>
         </>
       )}
     </div>
