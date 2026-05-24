@@ -7,8 +7,9 @@ import { NebulaShader } from './NebulaShader';
 import { PlanetShader } from './PlanetShader';
 import { StarlightShader } from './StarlightShader';
 import { useCinematicCamera } from '../../hooks/useCinematicCamera';
-import { generateStarlightData, STARLIGHT_COUNT } from './starlightUtils';
+import { generateStarlightData, STARLIGHT_COUNT, StarlightData } from './starlightUtils';
 import { MagicCircle } from './MagicCircle';
+import { Constellations } from './Constellations';
 
 const CameraController = ({ sceneIndex }: { sceneIndex: number }) => {
   useCinematicCamera(sceneIndex);
@@ -111,12 +112,11 @@ const Planet = ({ sceneIndex }: { sceneIndex: number }) => {
   );
 };
 
-const Starlight = () => {
+const Starlight = ({ data }: { data: StarlightData }) => {
   const count = STARLIGHT_COUNT;
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
-  const data = useMemo(() => generateStarlightData(count), [count]);
   const { initialPositions, seeds, sizes, speeds } = data;
 
   const uniforms = useMemo(() => ({
@@ -173,6 +173,8 @@ const Starlight = () => {
 export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => {
   const [circles, setCircles] = useState<{ id: number; pos: THREE.Vector3; color: THREE.Color }[]>([]);
 
+  const starlightData = useMemo(() => generateStarlightData(STARLIGHT_COUNT), []);
+
   const colors = useMemo(() => {
     switch (sceneIndex) {
       case 0: return { c1: new THREE.Color(0x4e00ff), c2: new THREE.Color(0xff0080) }; // Purple/Pink
@@ -199,7 +201,8 @@ export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => {
       <Canvas camera={{ position: [0, 0, 10] }} dpr={[1, 2]}>
         <CameraController sceneIndex={sceneIndex} />
         <Nebula onClick={handleBackgroundClick} colors={colors} />
-        <Starlight />
+        <Starlight data={starlightData} />
+        <Constellations starPositions={starlightData.initialPositions} />
         <Planet sceneIndex={sceneIndex} />
         {circles.map(c => (
           <MagicCircle 
