@@ -6,6 +6,7 @@ import { NebulaShader } from './NebulaShader';
 import { PlanetShader } from './PlanetShader';
 import { StarlightShader } from './StarlightShader';
 import { useCinematicCamera } from '../../hooks/useCinematicCamera';
+import { generateStarlightData, STARLIGHT_COUNT } from './starlightUtils';
 
 const CameraController = ({ sceneIndex }: { sceneIndex: number }) => {
   useCinematicCamera(sceneIndex);
@@ -113,26 +114,8 @@ const Planet = ({ sceneIndex }: { sceneIndex: number }) => {
   );
 };
 
-const generateStarlightData = (count: number) => {
-  const pos = new Float32Array(count * 3);
-  const seed = new Float32Array(count);
-  const size = new Float32Array(count);
-  const speed = new Float32Array(count);
-
-  for (let i = 0; i < count; i++) {
-    pos[i * 3 + 0] = (Math.random() - 0.5) * 40;
-    pos[i * 3 + 1] = (Math.random() - 0.5) * 40;
-    pos[i * 3 + 2] = (Math.random() - 0.5) * 10 - 5;
-    
-    seed[i] = Math.random() * 100;
-    size[i] = Math.random() * 2.0 + 0.5;
-    speed[i] = Math.random() * 0.5 + 0.1;
-  }
-  return { initialPositions: pos, seeds: seed, sizes: size, speeds: speed };
-};
-
 const Starlight = () => {
-  const count = 5000;
+  const count = STARLIGHT_COUNT;
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
@@ -142,6 +125,11 @@ const Starlight = () => {
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
     uMouse: { value: new THREE.Vector2(0, 0) },
+    uPartDistance: { value: 4.0 },
+    uPartForce: { value: 1.5 },
+    uDriftAmount: { value: 0.1 },
+    uBaseScale: { value: 0.1 },
+    uTwinkleSpeed: { value: 5.0 },
   }), []);
 
   useFrame((state) => {
