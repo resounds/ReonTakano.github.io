@@ -1,7 +1,7 @@
 export const SCENES = [
-  { id: 0, label: 'WELCOME', subLabel: 'Welcome' },
-  { id: 1, label: 'PERSONA', subLabel: 'Persona & Career' },
-  { id: 2, label: 'RESEARCH', subLabel: 'Research' },
-  { id: 3, label: 'ARCHIVE', subLabel: 'Archive' },
-  { id: 4, label: 'CONTACT', subLabel: 'Contact' },
+  { id: 0, label: 'WELCOME', subLabel: 'Welcome', icon: 'Sparkles' },
+  { id: 1, label: 'PERSONA', subLabel: 'Persona & Career', icon: 'User' },
+  { id: 2, label: 'RESEARCH', subLabel: 'Research', icon: 'Microscope' },
+  { id: 3, label: 'ARCHIVE', subLabel: 'Archive', icon: 'Library' },
+  { id: 4, label: 'CONTACT', subLabel: 'Contact', icon: 'Mail' },
 ];
