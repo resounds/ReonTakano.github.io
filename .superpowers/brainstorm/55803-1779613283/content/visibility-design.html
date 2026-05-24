@@ -1,0 +1,42 @@
+<h2>Scene-Specific Visibility Design</h2>
+<p class="subtitle">Tailoring typography to each background's color and movement.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Dynamic Contrast (Recommended)</h3>
+      <p>Custom colors for each scene (e.g., pure white for Purple, subtle off-white for Orange) + deep text-shadows for legibility against movement.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Glassmorphism Overlays</h3>
+      <p>Adding a very subtle, blurred dark backdrop (backdrop-filter) behind text blocks to isolate them from the nebula animation.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Unified High-Contrast</h3>
+      <p>Strict pure white text with a consistent heavy outer glow across all scenes, regardless of the underlying color.</p>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Current: Static Gray/White</div>
+    <div class="mockup-body" style="background: linear-gradient(135deg, #4e00ff, #ff0080); height: 250px; display: flex; align-items: center; justify-content: center; color: #fff; padding: 2rem;">
+      <h3 style="opacity: 0.8;">REON TAKANO</h3>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Proposal: Dynamic High-Visibility</div>
+    <div class="mockup-body" style="background: linear-gradient(135deg, #4e00ff, #ff0080); height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; padding: 2rem;">
+      <h3 style="font-family: serif; letter-spacing: 0.2em; text-shadow: 0 4px 20px rgba(0,0,0,0.8); font-size: 2.2rem;">REON TAKANO</h3>
+      <p style="text-shadow: 0 2px 10px rgba(0,0,0,0.5); opacity: 0.9;">Immersive Storyteller</p>
+    </div>
+  </div>
+</div>

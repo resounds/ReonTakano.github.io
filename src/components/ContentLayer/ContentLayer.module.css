@@ -15,12 +15,21 @@
 }
 
 .scene {
-  height: 100vh;
+  min-height: 100vh; /* allow section to grow when content is taller than viewport */
   scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none; /* Allow clicks to pass to background */
+}
+
+/* On very short/narrow viewports, avoid vertical centering so content doesn't overlap adjacent scenes */
+@media (max-width: 375px), (max-height: 700px) {
+  .scene {
+    align-items: flex-start;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .scene > * {

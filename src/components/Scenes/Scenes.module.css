@@ -136,9 +136,22 @@
 .heroTitle {
   font-family: serif;
   font-size: 4rem;
+  color: white;
   letter-spacing: 0.15em;
+  line-height: 1.05;
   margin: 0;
   text-transform: uppercase;
+}
+
+/* Allow explicit line breaks to wrap cleanly and avoid overlap */
+.heroTitle {
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.heroTitle br {
+  display: block;
+  margin-top: 0.1em;
 }
 
 .heroSubtitle {
@@ -177,7 +190,8 @@
 }
 
 .sceneCard {
-  width: 140px;
+  flex: 0 1 140px;
+  max-width: 220px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
@@ -238,6 +252,16 @@
   letter-spacing: 0.2em;
 }
 
+@media (max-width: 840px) {
+  .heroTitle {
+    font-size: 3.5rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.05;
+
+  }
+}
+
 @media (max-width: 768px) {
   .sceneContent {
     padding: 1.5rem;
@@ -245,7 +269,9 @@
 
   .heroTitle {
     font-size: 2.5rem;
+    color: white;
     letter-spacing: 0.1em;
+    line-height: 1.05;
   }
 
   .heroSubtitle {
@@ -260,7 +286,8 @@
   }
 
   .sceneCard {
-    width: 120px;
+    flex: 0 1 120px;
+    max-width: 180px;
     padding: 0.6rem;
   }
 
@@ -290,9 +317,13 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 505px) {
   .heroTitle {
     font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.05;
+
   }
 
   .cardGrid {
@@ -314,6 +345,39 @@
     height: 30px;
   }
 }
+
+@media (max-width: 388px) {
+  .heroTitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.05;
+
+  }
+}
+
+@media (max-width: 360px) {
+  .heroTitle {
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .sceneCard {
+    padding: 0.5rem;
+  }
+
+  .exploreHint {
+    margin-top: 1.5rem;
+  }
+}
+
+
 
 /* 視認性向上のためのテキストシャドウ */
 .textShadow {

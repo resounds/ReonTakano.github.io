@@ -27,7 +27,9 @@ export const SceneEntrance = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className={`${styles.heroTitle} ${styles.textGlow}`}>鷹野礼音 OFFICIAL WEBSITE</h1>
+        <h1 className={`${styles.heroTitle} ${styles.textGlow}`}>
+          REON TAKANO<br/>OFFICIAL WEBSITE
+        </h1>
         <p className={`${styles.heroSubtitle} ${styles.textShadow}`}>Immersive Storyteller</p>
         <div className={styles.divider} />
       </motion.div>
@@ -38,7 +40,6 @@ export const SceneEntrance = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
       >
-        <h2 className={`${styles.storyboardTitle} ${styles.textShadow}`}>STORYBOARD</h2>
         <div className={styles.cardGrid}>
           {SCENES.map((scene) => {
             const Icon = iconMap[scene.icon];
