@@ -271,3 +271,21 @@
     height: 30px;
   }
 }
+
+/* 視認性向上のためのテキストシャドウ */
+.textShadow {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.textShadowStrong {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* シーン別のカラー調整（必要に応じて追加） */
+.brightText {
+  color: #ffffff;
+}
+
+.softText {
+  color: rgba(255, 255, 255, 0.9);
+}
