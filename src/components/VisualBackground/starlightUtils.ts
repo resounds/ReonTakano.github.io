@@ -15,9 +15,14 @@ export const generateStarlightData = (count: number): StarlightData => {
   const speed = new Float32Array(count);
 
   for (let i = 0; i < count; i++) {
-    pos[i * 3 + 0] = (Math.random() - 0.5) * 40;
-    pos[i * 3 + 1] = (Math.random() - 0.5) * 40;
-    pos[i * 3 + 2] = (Math.random() - 0.5) * 10 - 5;
+    // Spherical distribution: r, theta, phi
+    const r = 15 + Math.random() * 20; // Radius between 15 and 35
+    const theta = Math.acos(2 * Math.random() - 1); // 0 to PI
+    const phi = Math.random() * Math.PI * 2; // 0 to 2PI
+    
+    pos[i * 3 + 0] = r * Math.sin(theta) * Math.cos(phi);
+    pos[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
+    pos[i * 3 + 2] = r * Math.cos(theta);
     
     seed[i] = Math.random() * 100;
     size[i] = Math.random() * 2.0 + 0.5;

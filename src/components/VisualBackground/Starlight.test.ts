@@ -23,4 +23,19 @@ describe('Starlight Data Generation', () => {
       expect(data.speeds[i]).toBeLessThanOrEqual(0.6);
     }
   });
+
+  it('should generate positions within a spherical shell', () => {
+    const count = 100;
+    const data = generateStarlightData(count);
+    for (let i = 0; i < count; i++) {
+      const x = data.initialPositions[i * 3 + 0];
+      const y = data.initialPositions[i * 3 + 1];
+      const z = data.initialPositions[i * 3 + 2];
+      const r = Math.sqrt(x * x + y * y + z * z);
+      
+      // Radius should be between 15 and 35
+      expect(r).toBeGreaterThanOrEqual(14.99); // Use small epsilon for float precision
+      expect(r).toBeLessThanOrEqual(35.01);
+    }
+  });
 });
