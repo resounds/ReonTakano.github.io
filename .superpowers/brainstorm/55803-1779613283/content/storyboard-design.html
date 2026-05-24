@@ -1,0 +1,72 @@
+<h2>Storyboard Navigation (Design Reference)</h2>
+<p class="subtitle">Based on your UI design, I've mocked up the Storyboard shortcut layout.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Preview: Storyboard Hub</div>
+  <div class="mockup-body" style="background: #050505; color: white; padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+    
+    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #222; border: 1px solid #444;"></div>
+        <div>
+          <div style="font-weight: bold; font-size: 0.9rem;">鷹野 礼音</div>
+          <div style="font-size: 0.7rem; opacity: 0.6;">REON TAKANO</div>
+        </div>
+      </div>
+      <div style="width: 50px; height: 50px; border-radius: 50%; border: 2px dashed #666; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">MENU</div>
+    </div>
+
+    <div style="text-align: center;">
+      <h3 style="font-family: serif; letter-spacing: 0.2em; margin-bottom: 1.5rem;">STORYBOARD</h3>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+        <!-- Welcome -->
+        <div style="width: 120px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="height: 100px; background: #111; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; opacity: 0.5;">WELCOME</div>
+          <div style="font-size: 0.7rem; margin-top: 0.5rem;">Welcome</div>
+        </div>
+        <!-- Persona -->
+        <div style="width: 120px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="height: 100px; background: #111; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; opacity: 0.5;">PERSONA</div>
+          <div style="font-size: 0.7rem; margin-top: 0.5rem;">Persona & Career</div>
+        </div>
+        <!-- Research -->
+        <div style="width: 120px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="height: 100px; background: #111; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; opacity: 0.5;">RESEARCH</div>
+          <div style="font-size: 0.7rem; margin-top: 0.5rem;">Research</div>
+        </div>
+        <!-- Archive -->
+        <div style="width: 120px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="height: 100px; background: #111; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; opacity: 0.5;">ARCHIVE</div>
+          <div style="font-size: 0.7rem; margin-top: 0.5rem;">Archive</div>
+        </div>
+        <!-- Contact -->
+        <div style="width: 120px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="height: 100px; background: #111; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; opacity: 0.5;">CONTACT</div>
+          <div style="font-size: 0.7rem; margin-top: 0.5rem;">Contact</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.1); position: relative;">
+      <div style="position: absolute; left: 0; top: -4px; width: 10px; height: 10px; background: white; border-radius: 50%;"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="options" data-multiselect>
+  <div class="option" data-choice="entrance_only" onclick="toggleSelect(this)">
+    <div class="letter">1</div>
+    <div class="content">
+      <h3>Entrance Scene Only</h3>
+      <p>Show as a "Menu" or "Storyboard" section within the first scene.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="global_overlay" onclick="toggleSelect(this)">
+    <div class="letter">2</div>
+    <div class="content">
+      <h3>Global Overlay</h3>
+      <p>Available at all times via a small toggle (like the circular menu in the top right).</p>
+    </div>
+  </div>
+</div>

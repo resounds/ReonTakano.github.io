@@ -1,0 +1,496 @@
+/* src/components/Scenes/Scenes.module.css */
+.sceneContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  pointer-events: none; /* Allow clicks to pass to background */
+}
+
+.title, .subtitle, .intro {
+  pointer-events: none; /* Allow clicks to pass through text */
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-family: serif;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+  max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Make card contents interactive (override .sceneContent pointer-events:none) */
+.cardInteractive {
+  pointer-events: auto;
+}
+
+
+.intro {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.multiCardContainer {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.scrollContainer {
+  /* Allow the container to expand to fit content on all screen sizes
+     instead of clipping with a scroll area. */
+  max-height: none;
+  overflow-y: visible;
+  padding-right: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.subCategoryHeader {
+  margin: 1.5rem 0 0.5rem;
+  opacity: 0.8;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.subCategoryHeader:first-child {
+  margin-top: 0.5rem;
+}
+
+.archiveList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.archiveItem {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  padding: 0.8rem 1rem;
+  border-radius: 0 4px 4px 0;
+  transition: background 0.3s ease;
+}
+
+.archiveItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.awardItem {
+  border-left-color: rgba(255, 215, 0, 0.5);
+}
+
+.archiveYear {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.archiveTitle {
+  font-weight: bold;
+  margin: 0.2rem 0;
+  line-height: 1.4;
+}
+
+.archiveVenue {
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.heroSection {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.heroTitle {
+  font-family: serif;
+  font-size: 4rem;
+  color: white;
+  letter-spacing: 0.15em;
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Allow explicit line breaks to wrap cleanly and avoid overlap */
+.heroTitle {
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.heroTitle br {
+  display: block;
+  margin-top: 0.1em;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 2rem auto;
+}
+
+.storyboardContainer {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.storyboardTitle {
+  font-family: serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.cardGrid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sceneCard {
+  flex: 0 1 140px;
+  max-width: 220px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.sceneCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.cardImagePlaceholder {
+  height: 90px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.sceneCard:hover .cardImagePlaceholder {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cardLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.exploreHint {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0.5;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, white, transparent);
+}
+
+.scrollText {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 840px) {
+  .heroTitle {
+    font-size: 3.5rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.05;
+
+  }
+}
+
+@media (max-width: 768px) {
+  .sceneContent {
+    padding: 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+    color: white;
+    letter-spacing: 0.1em;
+    line-height: 1.05;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+  .storyboardTitle {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .sceneCard {
+    flex: 0 1 120px;
+    max-width: 180px;
+    padding: 0.6rem;
+  }
+
+  .cardImagePlaceholder {
+    height: 70px;
+  }
+
+  .cardLabel {
+    font-size: 0.65rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .multiCardContainer {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 505px) {
+  .heroTitle {
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.05;
+
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .sceneCard {
+    width: auto;
+  }
+
+  .exploreHint {
+    margin-top: 2rem;
+  }
+
+  .scrollLine {
+    height: 30px;
+  }
+}
+
+@media (max-width: 388px) {
+  .heroTitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.05;
+
+  }
+}
+
+@media (max-width: 360px) {
+  .heroTitle {
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .sceneCard {
+    padding: 0.5rem;
+  }
+
+  .exploreHint {
+    margin-top: 1.5rem;
+  }
+}
+
+
+
+/* 視認性向上のためのテキストシャドウ */
+.textShadow {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.textShadowStrong {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.textGlow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* シーン別のカラー調整（必要に応じて追加） */
+.brightText {
+  color: #ffffff;
+}
+
+.softText {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Contact Links */
+.contactLinksContainer {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  pointer-events: auto; /* Required to make links clickable because sceneContent has pointer-events: none */
+  flex-wrap: wrap;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(219,39,119,0.12), rgba(139,92,246,0.12));
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  text-decoration: none;
+  border: none;
+}
+
+.contactLink img,
+.contactLink svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: inherit;
+}
+
+.contactLink:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, rgba(219,39,119,0.22), rgba(139,92,246,0.22));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+@media (max-width: 768px) {
+  .contactLinksContainer {
+    gap: 1rem;
+  }
+
+  .contactLink {
+    width: 48px;
+    height: 48px;
+  }
+
+  .contactLink img,
+  .contactLink svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 505px) {
+  .contactLinksContainer {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .contactLink {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contactLink img,
+  .contactLink svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contactLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contactLink img,
+  .contactLink svg {
+    width: 14px;
+    height: 14px;
+  }
+}
