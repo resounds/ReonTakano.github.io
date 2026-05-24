@@ -84,3 +84,107 @@
 .subCategoryHeader:first-child {
   margin-top: 0.5rem;
 }
+
+.heroSection {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.heroTitle {
+  font-family: serif;
+  font-size: 4rem;
+  letter-spacing: 0.15em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 2rem auto;
+}
+
+.storyboardContainer {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.storyboardTitle {
+  font-family: serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.cardGrid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sceneCard {
+  width: 140px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.sceneCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.cardImagePlaceholder {
+  height: 90px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.1em;
+}
+
+.cardLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.exploreHint {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0.5;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, white, transparent);
+}
+
+.scrollText {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+}
