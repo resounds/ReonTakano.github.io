@@ -1,23 +1,24 @@
 // src/components/Scenes/ScenePersona.tsx
-import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Scenes.module.css';
 import { profile } from '../../data/profile';
+import { PixieCard } from '../Common/PixieCard';
 
 export const ScenePersona = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+
   return (
-    <div className={styles.sceneContent}>
-      <motion.div 
-        className={`${styles.card} ${styles.textShadow}`}
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h2>Persona</h2>
+    <div className={styles.sceneContent} ref={ref}>
+      <PixieCard isVisible={isInView} className={styles.textShadow}>
+        <h3>Persona</h3>
+        <h4>{profile.name} ({profile.englishName})</h4>
         <p className={styles.intro}>{profile.intro}</p>
         <div style={{ marginTop: '1rem' }}>
           <strong>Hobbies:</strong> {profile.hobbies.join(', ')}
         </div>
-      </motion.div>
+      </PixieCard>
     </div>
   );
 };

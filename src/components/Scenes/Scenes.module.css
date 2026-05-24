@@ -36,6 +36,12 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Make card contents interactive (override .sceneContent pointer-events:none) */
+.cardInteractive {
+  pointer-events: auto;
+}
+
+
 .intro {
   font-size: 1.2rem;
   line-height: 1.6;
@@ -407,45 +413,84 @@
 .contactLinksContainer {
   margin-top: 2.5rem;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   justify-content: center;
   pointer-events: auto; /* Required to make links clickable because sceneContent has pointer-events: none */
+  flex-wrap: wrap;
 }
 
 .contactLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
   color: #ffffff;
+  background: linear-gradient(135deg, rgba(219,39,119,0.12), rgba(139,92,246,0.12));
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.8rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
-  position: relative;
-  overflow: hidden;
+  border: none;
 }
 
-.contactLink::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.contactLink img,
+.contactLink svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: inherit;
 }
 
 .contactLink:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
+  background: linear-gradient(135deg, rgba(219,39,119,0.22), rgba(139,92,246,0.22));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
-.contactLink:hover::before {
-  opacity: 1;
+@media (max-width: 768px) {
+  .contactLinksContainer {
+    gap: 1rem;
+  }
+
+  .contactLink {
+    width: 48px;
+    height: 48px;
+  }
+
+  .contactLink img,
+  .contactLink svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 505px) {
+  .contactLinksContainer {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .contactLink {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contactLink img,
+  .contactLink svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contactLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contactLink img,
+  .contactLink svg {
+    width: 14px;
+    height: 14px;
+  }
 }
