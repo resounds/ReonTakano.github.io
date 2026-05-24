@@ -13,10 +13,10 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const SceneEntrance = () => {
   const handleJump = (index: number) => {
-    window.scrollTo({
-      top: window.innerHeight * index,
-      behavior: 'smooth'
-    });
+    const sections = Array.from(document.querySelectorAll('main > section')) as HTMLElement[];
+    const target = sections[index];
+    const top = target ? target.offsetTop : window.innerHeight * index;
+    window.scrollTo({ top, behavior: 'smooth' });
   };
 
   return (
@@ -41,14 +41,14 @@ export const SceneEntrance = () => {
         transition={{ duration: 1, delay: 0.8 }}
       >
         <div className={styles.cardGrid}>
-          {SCENES.map((scene) => {
+          {SCENES.map((scene, index) => {
             const Icon = iconMap[scene.icon];
             return (
               <motion.div
                 key={scene.id}
                 className={styles.sceneCard}
                 whileHover={{ scale: 1.05 }}
-                onClick={() => handleJump(scene.id)}
+                onClick={() => handleJump(index + 1)}
               >
                 <div className={styles.cardImagePlaceholder}>
                   {Icon && <Icon size={32} strokeWidth={1.5} />}

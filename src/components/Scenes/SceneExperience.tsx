@@ -1,34 +1,42 @@
-import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Scenes.module.css';
 import { experience, education } from '../../data/career';
+import { PixieCard } from '../Common/PixieCard';
+
+const ItemList = ({ items }: { items: { period: string; title: string; organization: string; description?: string }[] }) => (
+  <ul className={styles.archiveList}>
+    {items.map((item, index) => (
+      <li key={index} className={styles.archiveItem}>
+        <div className={styles.archiveYear}>{item.period}</div>
+        <div className={styles.archiveTitle}>{item.title} @ {item.organization}</div>
+        {item.description && <div className={styles.archiveVenue}>{item.description}</div>}
+      </li>
+    ))}
+  </ul>
+);
 
 export const SceneExperience = () => {
-  return (
-    <div className={styles.sceneContent}>
-      <motion.div
-        className={`${styles.card} ${styles.textShadow}`}
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <h2>Experience</h2>
-        {experience.map((item, index) => (
-          <div key={index} style={{ marginBottom: '1rem' }}>
-            <div style={{ fontWeight: 'bold' }}>{item.period}</div>
-            <div>{item.title} @ {item.organization}</div>
-            <p style={{ opacity: 0.8, fontSize: '0.9rem' }}>{item.description}</p>
-          </div>
-        ))}
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.2 });
 
-        <h2 style={{ marginTop: '2rem' }}>Education</h2>
-        {education.map((item, index) => (
-          <div key={index} style={{ marginBottom: '1rem' }}>
-            <div style={{ fontWeight: 'bold' }}>{item.period}</div>
-            <div>{item.title} @ {item.organization}</div>
-            <p style={{ opacity: 0.8, fontSize: '0.9rem' }}>{item.description}</p>
+  return (
+    <div className={styles.sceneContent} ref={ref}>
+      <div className={styles.multiCardContainer}>
+        <PixieCard isVisible={isInView} className={styles.textShadow}>
+          <h3>Experience</h3>
+          <div className={styles.scrollContainer}>
+            <ItemList items={experience} />
           </div>
-        ))}
-      </motion.div>
+        </PixieCard>
+
+        <PixieCard isVisible={isInView} className={styles.textShadow}>
+          <h3>Education</h3>
+          <div className={styles.scrollContainer}>
+            <ItemList items={education} />
+          </div>
+        </PixieCard>
+      </div>
     </div>
   );
 };

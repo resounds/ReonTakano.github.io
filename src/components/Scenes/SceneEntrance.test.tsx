@@ -14,7 +14,7 @@ test('SceneEntrance renders hero section and storyboard', () => {
   
   // Check if scene cards are rendered (assuming at least one scene)
   expect(screen.getByText('PERSONA')).toBeDefined();
-  expect(screen.getByText('RESEARCH')).toBeDefined();
+  expect(screen.getByText('EXPERIENCE')).toBeDefined();
   expect(screen.getByText('ARCHIVE')).toBeDefined();
   expect(screen.getByText('CONTACT')).toBeDefined();
 });
@@ -31,11 +31,11 @@ test('SceneEntrance handles jump on card click', () => {
   
   const firstCard = screen.getByText('PERSONA').closest('.sceneCard');
   expect(firstCard).toBeDefined();
-  if (firstCard) {
-    fireEvent.click(firstCard);
-    expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 0, // first scene index is 0
-      behavior: 'smooth'
-    });
-  }
+    if (firstCard) {
+      fireEvent.click(firstCard);
+      expect(window.scrollTo).toHaveBeenCalledWith({
+        top: window.innerHeight, // first storyboard card jumps to second section (skip entrance)
+        behavior: 'smooth'
+      });
+    }
 });

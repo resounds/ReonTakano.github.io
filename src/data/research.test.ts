@@ -14,7 +14,7 @@ describe('research data', () => {
   });
 
   it('should contain the specific archived research info', () => {
-    const archivedResearch = research.find(r => r.title === "感性とテクノロジーの融合: 空間デザインの最適化");
+    const archivedResearch = research.find(r => r.title === "対話型遺伝的アルゴリズムに基づく個人の趣向に合わせた空間デザイン");
     expect(archivedResearch).toBeDefined();
     expect(archivedResearch?.status).toBe("Archived (M.S. Research)");
     expect(archivedResearch?.tags).toContain("Genetic Algorithm");
