@@ -152,15 +152,21 @@
 
 .cardImagePlaceholder {
   height: 90px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
   border-radius: 2px;
   margin-bottom: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.2);
-  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.sceneCard:hover .cardImagePlaceholder {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .cardLabel {
@@ -187,4 +193,81 @@
 .scrollText {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
+}
+
+@media (max-width: 768px) {
+  .sceneContent {
+    padding: 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+  .storyboardTitle {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .sceneCard {
+    width: 120px;
+    padding: 0.6rem;
+  }
+
+  .cardImagePlaceholder {
+    height: 70px;
+  }
+
+  .cardLabel {
+    font-size: 0.65rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .multiCardContainer {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .sceneCard {
+    width: auto;
+  }
+
+  .exploreHint {
+    margin-top: 2rem;
+  }
+
+  .scrollLine {
+    height: 30px;
+  }
 }

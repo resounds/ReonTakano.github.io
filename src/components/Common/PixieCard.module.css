@@ -37,4 +37,11 @@
   border-color: rgba(255, 215, 0, 0.3);
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+}
+
 /* Optional sparkle elements inside the card could go here */

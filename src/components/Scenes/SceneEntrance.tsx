@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import styles from './Scenes.module.css';
 import { SCENES } from '../../data/scenes';
-import { Sparkles, User, Microscope, Library, Mail, LucideIcon } from 'lucide-react';
+import { Sparkles, User, Microscope, Library, Mail, type LucideIcon } from 'lucide-react';
 
 const iconMap: Record<string, LucideIcon> = {
   Sparkles,
@@ -27,7 +27,7 @@ export const SceneEntrance = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className={styles.heroTitle}>鷹野礼音OFFICIAL WEBSITE</h1>
+        <h1 className={styles.heroTitle}>鷹野礼音 OFFICIAL WEBSITE</h1>
         <p className={styles.heroSubtitle}>Immersive Storyteller</p>
         <div className={styles.divider} />
       </motion.div>
@@ -50,7 +50,7 @@ export const SceneEntrance = () => {
                 onClick={() => handleJump(scene.id)}
               >
                 <div className={styles.cardImagePlaceholder}>
-                  {Icon && <Icon size={32} strokeWidth={1.5} style={{ opacity: 0.8 }} />}
+                  {Icon && <Icon size={32} strokeWidth={1.5} />}
                 </div>
                 <div className={styles.cardLabel}>{scene.label}</div>
               </motion.div>
@@ -58,6 +58,7 @@ export const SceneEntrance = () => {
           })}
         </div>
       </motion.div>
+
 
       <motion.div 
         className={styles.exploreHint}
