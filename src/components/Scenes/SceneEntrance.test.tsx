@@ -9,7 +9,7 @@ test('SceneEntrance renders hero section and storyboard', () => {
   render(<SceneEntrance />);
   
   // Hero section
-  expect(screen.getByText('鷹野礼音OFFICIAL WEBSITE')).toBeDefined();
+  expect(screen.getByText('鷹野礼音 OFFICIAL WEBSITE')).toBeDefined();
   expect(screen.getByText('Immersive Storyteller')).toBeDefined();
   
   // Storyboard section
