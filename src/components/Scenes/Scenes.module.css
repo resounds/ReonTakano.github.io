@@ -281,6 +281,10 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.textGlow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
 /* シーン別のカラー調整（必要に応じて追加） */
 .brightText {
   color: #ffffff;

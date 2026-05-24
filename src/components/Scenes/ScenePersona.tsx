@@ -8,7 +8,7 @@ export const ScenePersona = () => {
   return (
     <div className={styles.sceneContent}>
       <motion.div 
-        className={styles.card}
+        className={`${styles.card} ${styles.textShadow}`}
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
@@ -21,7 +21,7 @@ export const ScenePersona = () => {
       </motion.div>
 
       <motion.div 
-        className={styles.card}
+        className={`${styles.card} ${styles.textShadow}`}
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
