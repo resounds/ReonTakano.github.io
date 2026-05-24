@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import styles from './Scenes.module.css';
 import { profile } from '../../data/profile';
-import { career } from '../../data/career';
+import { experience, education } from '../../data/career';
 
 export const ScenePersona = () => {
   return (
@@ -26,8 +26,17 @@ export const ScenePersona = () => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <h2>Career</h2>
-        {career.map((item, index) => (
+        <h2>Experience</h2>
+        {experience.map((item, index) => (
+          <div key={index} style={{ marginBottom: '1rem' }}>
+            <div style={{ fontWeight: 'bold' }}>{item.period}</div>
+            <div>{item.title} @ {item.organization}</div>
+            <p style={{ opacity: 0.8, fontSize: '0.9rem' }}>{item.description}</p>
+          </div>
+        ))}
+
+        <h2 style={{ marginTop: '2rem' }}>Education</h2>
+        {education.map((item, index) => (
           <div key={index} style={{ marginBottom: '1rem' }}>
             <div style={{ fontWeight: 'bold' }}>{item.period}</div>
             <div>{item.title} @ {item.organization}</div>
