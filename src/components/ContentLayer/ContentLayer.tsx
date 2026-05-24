@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import styles from './ContentLayer.module.css';
 import { SceneEntrance } from '../Scenes/SceneEntrance';
 import { ScenePersona } from '../Scenes/ScenePersona';
-import { SceneResearch } from '../Scenes/SceneResearch';
+import { SceneExperience } from '../Scenes/SceneExperience';
 import { SceneArchive } from '../Scenes/SceneArchive';
 import { SceneContact } from '../Scenes/SceneContact';
 
@@ -27,7 +27,7 @@ export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
       const ratios = sections.map(getVisibleRatio);
       const max = Math.max(...ratios);
       const idx = ratios.indexOf(max);
-      if (max > 0.05) onSceneChange(idx); // only change when something is at least slightly visible
+      if (max > 0.05) onSceneChange(idx);
     };
 
     const observer = new IntersectionObserver(() => decide(), { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
@@ -48,7 +48,7 @@ export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
         <ScenePersona />
       </section>
       <section className={styles.scene}>
-        <SceneResearch />
+        <SceneExperience />
       </section>
       <section className={styles.scene}>
         <SceneArchive />
