@@ -6,12 +6,12 @@ import { awards } from '../../data/awards';
 import { PixieCard } from '../Common/PixieCard';
 
 const PublicationList = ({ items }: { items: typeof publications }) => (
-  <ul style={{ listStyle: 'none', padding: 0 }}>
+  <ul className={styles.archiveList}>
     {items.map((item, index) => (
-      <li key={index} style={{ marginBottom: '1.5rem', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '1rem' }}>
-        <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>{item.year}</div>
-        <div style={{ fontWeight: 'bold', margin: '0.2rem 0' }}>{item.title}</div>
-        <div style={{ fontStyle: 'italic', fontSize: '0.9rem', opacity: 0.9 }}>{item.venue}</div>
+      <li key={index} className={styles.archiveItem}>
+        <div className={styles.archiveYear}>{item.year}</div>
+        <div className={styles.archiveTitle}>{item.title}</div>
+        <div className={styles.archiveVenue}>{item.venue}</div>
       </li>
     ))}
   </ul>
@@ -27,7 +27,7 @@ export const SceneArchive = () => {
   return (
     <div className={styles.sceneContent} ref={ref}>
       <div className={styles.multiCardContainer}>
-        <PixieCard isVisible={isInView}>
+        <PixieCard isVisible={isInView} className={styles.textShadow}>
           <h3>Publications</h3>
           <div className={styles.scrollContainer}>
             {internationalPubs.length > 0 && (
@@ -45,14 +45,14 @@ export const SceneArchive = () => {
           </div>
         </PixieCard>
 
-        <PixieCard isVisible={isInView}>
+        <PixieCard isVisible={isInView} className={styles.textShadow}>
           <h3>Awards</h3>
           <div className={styles.scrollContainer}>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <ul className={styles.archiveList}>
               {awards.map((item, index) => (
-                <li key={index} style={{ marginBottom: '1rem', borderLeft: '2px solid rgba(255,215,0,0.3)', paddingLeft: '1rem' }}>
-                  <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>{item.year}</div>
-                  <div style={{ fontWeight: 'bold', margin: '0.2rem 0' }}>{item.title}</div>
+                <li key={index} className={`${styles.archiveItem} ${styles.awardItem}`}>
+                  <div className={styles.archiveYear}>{item.year}</div>
+                  <div className={styles.archiveTitle}>{item.title}</div>
                 </li>
               ))}
             </ul>
