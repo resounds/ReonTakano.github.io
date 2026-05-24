@@ -13,15 +13,30 @@ interface ContentLayerProps {
 
 export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
   useEffect(() => {
-    const handleScroll = () => {
-      const { scrollTop } = document.documentElement;
-      const clientHeight = window.innerHeight;
-      const index = Math.round(scrollTop / clientHeight);
-      onSceneChange(index);
+    // Use IntersectionObserver to choose the section with the largest visible area
+    const sections = Array.from(document.querySelectorAll(`.${styles.scene}`)) as HTMLElement[];
+    if (sections.length === 0) return;
+
+    const getVisibleRatio = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+      return visibleHeight / window.innerHeight;
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const decide = () => {
+      const ratios = sections.map(getVisibleRatio);
+      const max = Math.max(...ratios);
+      const idx = ratios.indexOf(max);
+      if (max > 0.05) onSceneChange(idx); // only change when something is at least slightly visible
+    };
+
+    const observer = new IntersectionObserver(() => decide(), { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
+    sections.forEach(s => observer.observe(s));
+
+    // Initial decide
+    decide();
+
+    return () => observer.disconnect();
   }, [onSceneChange]);
 
   return (
