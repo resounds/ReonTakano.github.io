@@ -44,7 +44,7 @@ export const NebulaShader = {
                + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
                + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
       float n_ = 0.142857142857;
-      vec3  ns = n_ * D.wyz - vec4(0.0, i1.z, i2.z, 1.0 ).xyz;
+      vec3  ns = n_ * D.wyz - D.xzx;
       vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
       vec4 x_ = floor(j * ns.z);
       vec4 y_ = floor(j - 7.0 * x_ );

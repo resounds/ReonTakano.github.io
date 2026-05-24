@@ -6,6 +6,14 @@
   position: relative;
   z-index: 1;
   color: white;
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .scene {

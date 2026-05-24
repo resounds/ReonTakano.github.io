@@ -1,0 +1,39 @@
+<h2>Architecture: Reactive Cosmic Engine</h2>
+<p class="subtitle">How the immersive story and interactive background work together</p>
+
+<div class="mockup">
+  <div class="mockup-header">System Overview</div>
+  <div class="mockup-body" style="padding: 20px;">
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <div style="flex: 1; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #ff0080;">
+        <h4 style="margin: 0 0 10px 0;">Three.js Background (The Universe)</h4>
+        <ul style="font-size: 0.85rem; margin: 0; padding-left: 20px;">
+          <li><strong>Particle System:</strong> Reactive nebula using GPU shaders.</li>
+          <li><strong>Planetary Objects:</strong> High-quality textured spheres with atmospheric glows.</li>
+          <li><strong>Camera Controller:</strong> Smoothly flies through space based on scroll progress.</li>
+        </ul>
+      </div>
+      <div style="font-size: 1.5rem; display: flex; align-items: center; padding-top: 40px;">→</div>
+      <div style="flex: 1; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #00ffff;">
+        <h4 style="margin: 0 0 10px 0;">React UI Layer (The Story)</h4>
+        <ul style="font-size: 0.85rem; margin: 0; padding-left: 20px;">
+          <li><strong>Scroll Observer:</strong> Maps scroll position to "Story Time".</li>
+          <li><strong>Scene Content:</strong> Framer Motion cards that fade/slide in as planets are reached.</li>
+          <li><strong>HUD Elements:</strong> Subtle navigation and profile info.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Does this architecture feel right to you?</h3>
+<div class="options">
+  <div class="option" data-choice="yes" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content"><h3>Looks Perfect</h3><p>Proceed with this structure.</p></div>
+  </div>
+  <div class="option" data-choice="refine" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content"><h3>Refine UI</h3><p>I want more focus on the text/data than the visuals.</p></div>
+  </div>
+</div>

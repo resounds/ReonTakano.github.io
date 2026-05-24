@@ -7,7 +7,8 @@ import { NebulaShader } from './NebulaShader';
 import { PlanetShader } from './PlanetShader';
 import { StarlightShader } from './StarlightShader';
 import { useCinematicCamera } from '../../hooks/useCinematicCamera';
-import { generateStarlightData, STARLIGHT_COUNT, StarlightData } from './starlightUtils';
+import { generateStarlightData, STARLIGHT_COUNT } from './starlightUtils';
+import type { StarlightData } from './starlightUtils';
 import { MagicCircle } from './MagicCircle';
 import { Constellations } from './Constellations';
 

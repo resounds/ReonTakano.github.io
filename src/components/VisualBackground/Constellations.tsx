@@ -15,7 +15,6 @@ export const Constellations = ({ starPositions }: ConstellationsProps) => {
   const linePositions = useMemo(() => new Float32Array(MAX_CONNECTIONS * 2 * 3), []);
   
   const mouseWorldPos = new THREE.Vector3();
-  const starPos = new THREE.Vector3();
   const neighbors = useMemo(() => new Array(12).fill(0).map(() => ({ index: -1, distSq: Infinity })), []);
 
   useFrame(() => {
@@ -67,7 +66,6 @@ export const Constellations = ({ starPositions }: ConstellationsProps) => {
       const az = starPositions[starA.index * 3 + 2];
 
       // Find 2 closest stars in activeNeighbors (excluding itself)
-      let connections = 0;
       const localNeighbors = activeNeighbors
         .map((n, idx) => {
           if (idx === i) return { idx, d2: Infinity };
@@ -121,6 +119,7 @@ export const Constellations = ({ starPositions }: ConstellationsProps) => {
           count={MAX_CONNECTIONS * 2}
           array={linePositions}
           itemSize={3}
+          args={[linePositions, 3]}
         />
       </bufferGeometry>
       <lineBasicMaterial transparent opacity={0.3} color="#ffffff" blending={THREE.AdditiveBlending} depthWrite={false} />
