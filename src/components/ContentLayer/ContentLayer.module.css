@@ -1,15 +1,13 @@
 /* src/components/ContentLayer/ContentLayer.module.css */
 .container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   position: relative;
   z-index: 1;
   color: white;
+  pointer-events: none; /* Let clicks pass to background */
 
   /* Hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .container::-webkit-scrollbar {
@@ -22,6 +20,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none; /* Allow clicks to pass to background */
+}
+
+.scene > * {
+  pointer-events: auto; /* Re-enable clicks for actual content */
 }
 
 .content {

@@ -51,9 +51,10 @@ const Nebula = ({ onClick, colors }: NebulaProps) => {
         fragmentShader={NebulaShader.fragmentShader}
         vertexShader={NebulaShader.vertexShader}
         uniforms={uniforms}
-        transparent
+        transparent={true}
         depthWrite={false}
-        side={THREE.BackSide}
+        depthTest={true}
+        side={THREE.DoubleSide}
       />
     </mesh>
   );
@@ -189,10 +190,11 @@ export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => {
 
   const handleBackgroundClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
+    console.log('Background clicked at:', e.point);
     const id = Date.now();
     const pos = e.point.clone();
-    // Slightly move it towards the camera to avoid Z-fighting with background sphere
-    pos.multiplyScalar(0.95);
+    // Slightly move it towards the camera (closer to z=10) to ensure visibility
+    pos.multiplyScalar(0.8); 
     const color = colors.c1.clone().lerp(colors.c2, Math.random());
     setCircles(prev => [...prev, { id, pos, color }]);
   };
@@ -201,6 +203,8 @@ export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => {
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, background: '#050505' }}>
       <Canvas camera={{ position: [0, 0, 10] }} dpr={[1, 2]}>
         <CameraController sceneIndex={sceneIndex} />
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
         <Nebula onClick={handleBackgroundClick} colors={colors} />
         <Starlight data={starlightData} />
         <Constellations starPositions={starlightData.initialPositions} />
@@ -216,4 +220,4 @@ export const VisualBackground = ({ sceneIndex }: { sceneIndex: number }) => {
       </Canvas>
     </div>
   );
-};
+  };

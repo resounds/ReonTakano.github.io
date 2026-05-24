@@ -51,7 +51,7 @@
 }
 
 #root {
-  width: 1126px;
+  width: 100vw;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -63,6 +63,16 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  background: transparent; /* Changed from #050505 to show background */
+}
+
+.app {
+  width: 100vw;
+  position: relative;
+  background: transparent;
 }
 
 h1,

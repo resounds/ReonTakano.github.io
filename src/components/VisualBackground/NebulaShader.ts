@@ -23,6 +23,7 @@ export const NebulaShader = {
 
     // A slightly more robust 3D noise for the nebula
     float mod289(float x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+    vec3 mod289(vec3 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
     vec4 mod289(vec4 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
     vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
     vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
@@ -83,9 +84,9 @@ export const NebulaShader = {
       vec3 color = mix(uColor1, uColor2, n);
       
       // Add subtle depth fade or variations
-      float alpha = clamp(n * 0.6, 0.0, 1.0);
+      float alpha = clamp(n * 0.8, 0.1, 1.0); // Ensure at least some base visibility
       
-      gl_FragColor = vec4(color, alpha * 0.5);
+      gl_FragColor = vec4(color, alpha * 0.7);
     }
   `
 };

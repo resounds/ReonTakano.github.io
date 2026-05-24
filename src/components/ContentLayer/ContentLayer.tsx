@@ -1,4 +1,5 @@
 // src/components/ContentLayer/ContentLayer.tsx
+import { useEffect } from 'react';
 import styles from './ContentLayer.module.css';
 import { SceneEntrance } from '../Scenes/SceneEntrance';
 import { ScenePersona } from '../Scenes/ScenePersona';
@@ -11,14 +12,20 @@ interface ContentLayerProps {
 }
 
 export const ContentLayer = ({ onSceneChange }: ContentLayerProps) => {
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const { scrollTop, clientHeight } = e.currentTarget;
-    const index = Math.round(scrollTop / clientHeight);
-    onSceneChange(index);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollTop } = document.documentElement;
+      const clientHeight = window.innerHeight;
+      const index = Math.round(scrollTop / clientHeight);
+      onSceneChange(index);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [onSceneChange]);
 
   return (
-    <main className={styles.container} onScroll={handleScroll}>
+    <main className={styles.container}>
       <section className={styles.scene}>
         <SceneEntrance />
       </section>

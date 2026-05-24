@@ -12,6 +12,8 @@ export const MagicCircle = ({ position, color, onComplete }: MagicCircleProps) =
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.MeshBasicMaterial>(null);
   
+  console.log('MagicCircle mounted at:', position);
+
   // Animation state tracked via ref to avoid React re-renders
   const anim = useRef({
     scale: 0,
@@ -56,7 +58,7 @@ export const MagicCircle = ({ position, color, onComplete }: MagicCircleProps) =
       <meshBasicMaterial 
         ref={materialRef}
         color={color} 
-        transparent 
+        transparent={true} 
         opacity={1} 
         side={THREE.DoubleSide}
         blending={THREE.AdditiveBlending}
