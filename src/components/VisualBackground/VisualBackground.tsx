@@ -4,6 +4,7 @@ import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { NebulaShader } from './NebulaShader';
 import { PlanetShader } from './PlanetShader';
+import { StarlightShader } from './StarlightShader';
 import { useCinematicCamera } from '../../hooks/useCinematicCamera';
 
 const CameraController = ({ sceneIndex }: { sceneIndex: number }) => {
@@ -112,72 +113,74 @@ const Planet = ({ sceneIndex }: { sceneIndex: number }) => {
   );
 };
 
-const generateParticles = (count: number) => {
-  const temp = [];
+const generateStarlightData = (count: number) => {
+  const pos = new Float32Array(count * 3);
+  const seed = new Float32Array(count);
+  const size = new Float32Array(count);
+  const speed = new Float32Array(count);
+
   for (let i = 0; i < count; i++) {
-    temp.push({
-      x: (Math.random() - 0.5) * 20,
-      y: (Math.random() - 0.5) * 20,
-      z: (Math.random() - 0.5) * 10 - 5,
-      speed: Math.random() * 0.02,
-      size: Math.random() * 1.5 + 0.5,
-      mx: 0,
-      my: 0
-    });
+    pos[i * 3 + 0] = (Math.random() - 0.5) * 40;
+    pos[i * 3 + 1] = (Math.random() - 0.5) * 40;
+    pos[i * 3 + 2] = (Math.random() - 0.5) * 10 - 5;
+    
+    seed[i] = Math.random() * 100;
+    size[i] = Math.random() * 2.0 + 0.5;
+    speed[i] = Math.random() * 0.5 + 0.1;
   }
-  return temp;
+  return { initialPositions: pos, seeds: seed, sizes: size, speeds: speed };
 };
 
 const Starlight = () => {
-  const count = 2000;
+  const count = 5000;
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-  
-  const particles = useMemo(() => generateParticles(count), [count]);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+
+  const data = useMemo(() => generateStarlightData(count), [count]);
+  const { initialPositions, seeds, sizes, speeds } = data;
+
+  const uniforms = useMemo(() => ({
+    uTime: { value: 0 },
+    uMouse: { value: new THREE.Vector2(0, 0) },
+  }), []);
 
   useFrame((state) => {
-    if (!meshRef.current) return;
-    
-    // Convert normalized device coordinates to rough world units for mouse interaction
-    const mouseX = state.pointer.x * 10;
-    const mouseY = state.pointer.y * 10;
-
-    particles.forEach((particle, i) => {
-      // Subtle drift
-      particle.x += Math.sin(state.clock.elapsedTime * particle.speed + i) * 0.01;
-      particle.y += Math.cos(state.clock.elapsedTime * particle.speed + i) * 0.01;
-      
-      // Calculate parting effect
-      const dx = particle.x - mouseX;
-      const dy = particle.y - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      
-      let offsetX = 0;
-      let offsetY = 0;
-      if (dist < 3) {
-        const force = (3 - dist) / 3;
-        offsetX = (dx / dist) * force * 0.5;
-        offsetY = (dy / dist) * force * 0.5;
-      }
-      
-      // Smooth return to original position
-      particle.mx += (offsetX - particle.mx) * 0.1;
-      particle.my += (offsetY - particle.my) * 0.1;
-
-      dummy.position.set(particle.x + particle.mx, particle.y + particle.my, particle.z);
-      const scale = particle.size * (1 + (dist < 3 ? (3 - dist) * 0.2 : 0));
-      dummy.scale.set(scale, scale, scale);
-      dummy.updateMatrix();
-      meshRef.current!.setMatrixAt(i, dummy.matrix);
-    });
-    
-    meshRef.current.instanceMatrix.needsUpdate = true;
+    if (materialRef.current) {
+      materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
+      const targetMouse = new THREE.Vector2(state.pointer.x * 15, state.pointer.y * 15);
+      materialRef.current.uniforms.uMouse.value.lerp(targetMouse, 0.05);
+    }
   });
 
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
-      <circleGeometry args={[0.02, 6]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.6} depthWrite={false} />
+      <circleGeometry args={[0.2, 6]}>
+        <instancedBufferAttribute
+          attach="attributes-aInitialPosition"
+          args={[initialPositions, 3]}
+        />
+        <instancedBufferAttribute
+          attach="attributes-aSeed"
+          args={[seeds, 1]}
+        />
+        <instancedBufferAttribute
+          attach="attributes-aSize"
+          args={[sizes, 1]}
+        />
+        <instancedBufferAttribute
+          attach="attributes-aSpeed"
+          args={[speeds, 1]}
+        />
+      </circleGeometry>
+      <shaderMaterial
+        ref={materialRef}
+        vertexShader={StarlightShader.vertexShader}
+        fragmentShader={StarlightShader.fragmentShader}
+        uniforms={uniforms}
+        transparent
+        depthWrite={false}
+        blending={THREE.AdditiveBlending}
+      />
     </instancedMesh>
   );
 };
